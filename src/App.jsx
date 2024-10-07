@@ -1,4 +1,3 @@
-
 import './App.css'
 import { Body } from './views/Body/Body'
 import { NavBar } from './views/NavBar/NavBar'
