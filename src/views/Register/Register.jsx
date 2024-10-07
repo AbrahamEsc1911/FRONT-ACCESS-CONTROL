@@ -1,4 +1,6 @@
+import { useNavigate } from 'react-router-dom'
 import { CInputs } from '../../components/CInputs/CInputs'
+import { register } from '../../Services/auth.services'
 import './Register.css'
 
 import React, { useState } from 'react'
@@ -18,6 +20,8 @@ export const Register = () => {
 
     const [passwordLong, setPasswordLong] = useState(false)
     const [allAreRequired, setAllAreRequired] = useState(false)
+    const [messageServer, setMessageServer] = useState(false)
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setCredentials((prevState) => ({
@@ -26,19 +30,29 @@ export const Register = () => {
         }))
     }
 
-    const sendRegister = () => {
+    const sendRegister = async () => {
         if (!credentials.email || !credentials.name || !credentials.StartUp || !credentials.dni || !credentials.phone || !credentials.password) {
             setAllAreRequired(true)
             setPasswordLong(false)
+            setErroMessage(false)
         }
         else if (credentials.password.length < 8 || credentials.password.length > 12) {
             setPasswordLong(true)
             setAllAreRequired(false)
+            setErroMessage(false)
         }
         else {
             setAllAreRequired(false);
             setPasswordLong(false);
-            console.log('credenciales eviadas')
+            setErroMessage(false)
+
+            const response = await register(credentials);
+            
+            if (response.success) {
+                navigate("/login")
+            } else {
+                setMessageServer(true)
+            }
         }
 
     }
@@ -54,7 +68,8 @@ export const Register = () => {
             <CInputs type='password' placeholder='Password' name='password' onChange={handleChange} />
             <p className={passwordLong ? "" : 'hident-content'}>password most be between 8 and 12 characters</p>
             <p className={allAreRequired ? "" : 'hident-content'}>all fields are required</p>
-            <CInputs type='button' value='send' name='name' onClick={sendRegister} />
+            <p className={messageServer ? "" : 'hident-content'}>try with another email</p>
+            <CInputs type='button' value='send' name='send' onClick={sendRegister} />
         </>
     )
 }
