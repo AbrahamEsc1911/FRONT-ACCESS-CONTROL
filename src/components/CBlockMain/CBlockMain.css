@@ -1,0 +1,13 @@
+.basic-block {
+    width: auto;
+    height: auto;
+
+    padding: 2rem;
+
+    background-color: gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 1.5rem;
+}

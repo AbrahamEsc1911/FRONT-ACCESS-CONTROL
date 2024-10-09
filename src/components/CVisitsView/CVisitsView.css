@@ -1,13 +1,12 @@
 .visit-count-body {
     width: 15rem;
-    height: 6rem;
+    height: 4rem;
 
-    background-color: rgb(232, 232, 232);
-    border-radius: 1.5rem;
-
+    background-color: orange;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 
 .visit-num {

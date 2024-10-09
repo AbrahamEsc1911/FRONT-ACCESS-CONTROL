@@ -1,3 +1,4 @@
+import { CBlockMain } from '../CBlockMain/CBlockMain'
 import './CVisitsView.css'
 
 import React from 'react'
@@ -5,7 +6,8 @@ import React from 'react'
 export const CVisitsView = ({numVisits, visits}) => {
   return (
     <>
-    <div className='visit-count-body'>
+    <CBlockMain content={
+        <div className='visit-count-body'>
         <div className='visit-num'>
           <h1>{numVisits}</h1>
         </div>
@@ -13,6 +15,8 @@ export const CVisitsView = ({numVisits, visits}) => {
           <p>{visits}</p>
         </div>
       </div>
+    } />
+    
     </>
   )
 }
