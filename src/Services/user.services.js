@@ -15,3 +15,20 @@ export const userProfile = async (token) => {
         console.error(`Error fetching data ${error}`)
     }
 }
+
+export const userCurrentState = async (token) => {
+    try {
+        const response = await fetch(`${URL}/current-access/`, {
+            method: 'GET',
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+
+        return await response.json()
+        
+    } catch (error) {
+        console.error(`Error fetching data ${error}`)
+    }
+}
