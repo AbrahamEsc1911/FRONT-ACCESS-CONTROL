@@ -35,7 +35,7 @@ export const userCurrentState = async (token) => {
 
 export const userAccessHistories = async (pageId, token) => {
     try {
-        const response = await fetch(`${URL}?page=${pageId}`, {
+        const response = await fetch(`${URL}/access-history?page=${pageId}`, {
             method: 'GET',
             headers: {
                 "Content-type": "application/json",

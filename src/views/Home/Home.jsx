@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './Home.css'
 import { useNavigate } from 'react-router-dom'
-import { userCurrentState, userProfile } from '../../Services/user.services'
+import { userAccessHistories, userCurrentState, userProfile } from '../../Services/user.services'
 import { userMonthAccesses } from '../../Services/accessHistories.services'
 import { CInputs } from '../../components/CInputs/CInputs'
 import { getAllRooms } from '../../Services/room.services'
 import { access, exit } from '../../Services/access.services'
+import { CVisitsView } from '../../components/CVisitsView/CVisitsView'
 
 export const Home = () => {
   const passport = JSON.parse(localStorage.getItem("passport"))
@@ -31,21 +32,24 @@ export const Home = () => {
   const [valueRequiredForAccess, setValueRequiredForAccess] = useState(false)
   const [btnToAccess, setbtnToAccess] = useState(false)
   const [accessNotGranted, setAccessNotGranted] = useState(false)
+  const [historiesUser, setHistoriesUser] = useState([])
+  const [noHistories, setNoHistories] = useState(false)
 
   useEffect(() => {
     if (passport) {
       const homeData = async () => {
         const bringProfile = await userProfile(token)
-        const brinUserHistoriesMonth = await userMonthAccesses(token)
-        const brinUserState = await userCurrentState(token)
+        const bringUserHistoriesMonth = await userMonthAccesses(token)
+        const bringUserState = await userCurrentState(token)
         const bringRoomsList = await getAllRooms()
+        const bringHistories = await userAccessHistories(1, token)
 
         if (bringProfile.success) {
           setProfile(bringProfile.data)
         }
 
-        if (brinUserHistoriesMonth.success) {
-          setnumVisits(brinUserHistoriesMonth.data.length)
+        if (bringUserHistoriesMonth.success) {
+          setnumVisits(bringUserHistoriesMonth.data.length)
         } else {
           setnumVisits(0)
         }
@@ -54,8 +58,14 @@ export const Home = () => {
           setRoomsList(bringRoomsList.data)
         }
 
-        if(brinUserState.success) {
+        if (bringUserState.success) {
           setbtnToAccess(true)
+        }
+
+        if (bringHistories.success) {
+          setHistoriesUser(bringHistories.data)
+        } else {
+          setNoHistories(true)
         }
 
       };
@@ -70,9 +80,9 @@ export const Home = () => {
   }
 
   const btnEntryPopUp = async () => {
-    if(btnToAccess) {
+    if (btnToAccess) {
       const response = await exit(token)
-      if(response.success) {
+      if (response.success) {
         setbtnToAccess(false)
       }
     } else {
@@ -85,18 +95,20 @@ export const Home = () => {
   }
 
   const entryRoom = async () => {
-      if (roomSelected.length === 0) {
-        setValueRequiredForAccess(true)
-      } else {
-        setValueRequiredForAccess(false)
-        const accessing = await access(roomSelected, token)
-        if (accessing.success) {
-          setbtnToAccess(true)
-        } else if (accessing.message === 'acccess not granted because the room is already full') {
-          setAccessNotGranted(true)
-        }
+    if (roomSelected.length === 0) {
+      setValueRequiredForAccess(true)
+    } else {
+      setValueRequiredForAccess(false)
+      const accessing = await access(roomSelected, token)
+      if (accessing.success) {
+        setbtnToAccess(true)
+      } else if (accessing.message === 'acccess not granted because the room is already full') {
+        setAccessNotGranted(true)
       }
+    }
   }
+
+  console.log(historiesUser)
 
   return (
     <>
@@ -105,13 +117,12 @@ export const Home = () => {
         {`Hello ${profile.name}`}
       </div>
 
-      <div>
-        {`${numVisits} ${visits}`}
-      </div>
+      <CVisitsView numVisits={numVisits} visits={visits}/>
+
 
       <CInputs type='button' value='Reservations' name='reservations' onClick={btnReservations} />
       <CInputs type='button' value={btnToAccess ? 'Exit' : 'Access'} name={btnToAccess ? 'Exit' : 'Access'} onClick={btnEntryPopUp} />
-    {/* COMPONETIZAR ESTE MENU DESPLEGABLE */}
+      {/* COMPONETIZAR ESTE MENU DESPLEGABLE */}
       <div>
         <select name="Rooms" id="rooms" value={roomSelected} onChange={handledRoomSelected}>
           <option value="">Rooms..</option>
@@ -124,6 +135,25 @@ export const Home = () => {
         <CInputs type='button' value='Entry' name='entry' onClick={entryRoom} />
       </div>
 
+      <div>
+        {!noHistories && historiesUser?.length > 0 && (
+          historiesUser.map((records) => {
+            return (
+              <div key={records.id}>
+                <div>
+                  {records.room.room}
+                </div>
+                <div>
+                  {records.entry_date}
+                </div>
+                <div>
+                  {records.exit_date}
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
     </>
   )
 }
