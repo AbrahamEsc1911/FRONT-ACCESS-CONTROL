@@ -1,3 +1,22 @@
 .hidden-content {
     display: none;
 }
+
+.body-home {
+    width: 100%;
+    background-color: orange;
+
+    display: flex;
+}
+
+.section-60 {
+    width: 60%;
+    background-color: red;
+
+}
+
+.section-40 {
+    width: 40%;
+    background-color: blue;
+    padding-right: 1rem;
+}

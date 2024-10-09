@@ -112,12 +112,23 @@ export const Home = () => {
 
   return (
     <>
+    <div className='body-home'>
+    <div className="section-60">
+        <div>
+          {`Hello ${profile.name}`}
+        </div>
 
-      <div>
-        {`Hello ${profile.name}`}
       </div>
+      <div className="section-40">
 
-      <CVisitsView numVisits={numVisits} visits={visits}/>
+        <CVisitsView numVisits={numVisits} visits={visits} />
+      </div>
+    </div>
+      
+
+      
+
+
 
 
       <CInputs type='button' value='Reservations' name='reservations' onClick={btnReservations} />
