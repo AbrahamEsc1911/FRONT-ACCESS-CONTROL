@@ -7,6 +7,7 @@ import { CInputs } from '../../components/CInputs/CInputs'
 import { getAllRooms } from '../../Services/room.services'
 import { access, exit } from '../../Services/access.services'
 import { CVisitsView } from '../../components/CVisitsView/CVisitsView'
+import { CWelcomBlock } from '../../components/CWelcomBlock/CWelcomBlock'
 
 export const Home = () => {
   const passport = JSON.parse(localStorage.getItem("passport"))
@@ -112,23 +113,16 @@ export const Home = () => {
 
   return (
     <>
-    <div className='body-home'>
-    <div className="section-60">
-        <div>
-          {`Hello ${profile.name}`}
+      <div className='body-home'>
+        <div className="section-60">
+        <CWelcomBlock name={profile.name} />
+
         </div>
+        <div className="section-40">
 
+          <CVisitsView numVisits={numVisits} visits={visits} />
+        </div>
       </div>
-      <div className="section-40">
-
-        <CVisitsView numVisits={numVisits} visits={visits} />
-      </div>
-    </div>
-      
-
-      
-
-
 
 
       <CInputs type='button' value='Reservations' name='reservations' onClick={btnReservations} />
