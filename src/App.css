@@ -21,7 +21,7 @@ html, body {
 }
 
 .navbar {
-  width: 140px;
+  width: 200px;
   color: white;
   height: 100vh;
   position: fixed;
@@ -37,8 +37,8 @@ html, body {
 }
 
 .content {
-  margin-left: 140px;
-  width: calc(100% - 140px);
+  margin-left: 200px;
+  width: calc(100% - 200px);
   overflow-y: auto;
   height: 100vh;
   overflow-x: hidden;

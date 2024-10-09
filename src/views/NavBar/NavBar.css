@@ -1,5 +1,5 @@
 .nav-main-content {
-    width: 7vw;
+    width: 8vw;
     height: 94vh;
     background-color: rgb(17, 17, 17);
 
@@ -8,6 +8,8 @@
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-logo {

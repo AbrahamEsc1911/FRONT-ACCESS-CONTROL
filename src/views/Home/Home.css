@@ -4,19 +4,20 @@
 
 .body-home {
     width: 100%;
-    background-color: orange;
+    /* background-color: orange; */
 
+    padding-top: 2.5rem;
     display: flex;
 }
 
 .section-60 {
-    width: 60%;
-    background-color: red;
-
+    width: 50%;
+    /* background-color: red; */
+    padding-right: 2rem;
 }
 
 .section-40 {
-    width: 40%;
-    background-color: blue;
-    padding-right: 1rem;
+    width: 50%;
+    /* background-color: blue; */
+    padding-right: 2rem;
 }
