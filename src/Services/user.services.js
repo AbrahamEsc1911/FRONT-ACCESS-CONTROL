@@ -32,3 +32,20 @@ export const userCurrentState = async (token) => {
         console.error(`Error fetching data ${error}`)
     }
 }
+
+export const userAccessHistories = async (pageId, token) => {
+    try {
+        const response = await fetch(`${URL}?page=${pageId}`, {
+            method: 'GET',
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+
+        return await response.json()
+
+    } catch (error) {
+        console.error(`Error fetching data ${error}`)
+    }
+}

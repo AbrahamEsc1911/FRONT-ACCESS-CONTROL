@@ -73,7 +73,6 @@ export const Home = () => {
     if(btnToAccess) {
       const response = await exit(token)
       if(response.success) {
-        console.log(response)
         setbtnToAccess(false)
       }
     } else {
@@ -91,7 +90,6 @@ export const Home = () => {
       } else {
         setValueRequiredForAccess(false)
         const accessing = await access(roomSelected, token)
-        console.log(accessing)
         if (accessing.success) {
           setbtnToAccess(true)
         } else if (accessing.message === 'acccess not granted because the room is already full') {
@@ -99,7 +97,6 @@ export const Home = () => {
         }
       }
   }
-
 
   return (
     <>
@@ -114,7 +111,7 @@ export const Home = () => {
 
       <CInputs type='button' value='Reservations' name='reservations' onClick={btnReservations} />
       <CInputs type='button' value={btnToAccess ? 'Exit' : 'Access'} name={btnToAccess ? 'Exit' : 'Access'} onClick={btnEntryPopUp} />
-
+    {/* COMPONETIZAR ESTE MENU DESPLEGABLE */}
       <div>
         <select name="Rooms" id="rooms" value={roomSelected} onChange={handledRoomSelected}>
           <option value="">Rooms..</option>
