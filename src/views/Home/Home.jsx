@@ -147,11 +147,6 @@ export const Home = () => {
         </div>
       </div>
 
-
-
-
-      <CInputs type='button' value='Reservations' name='reservations' onClick={btnReservations} />
-      <CInputs type='button' value={btnToAccess ? 'Exit' : 'Access'} name={btnToAccess ? 'Exit' : 'Access'} onClick={btnEntryPopUp} />
       {/* COMPONETIZAR ESTE MENU DESPLEGABLE */}
       <div>
         <select name="Rooms" id="rooms" value={roomSelected} onChange={handledRoomSelected}>
