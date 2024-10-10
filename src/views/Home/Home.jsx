@@ -115,14 +115,39 @@ export const Home = () => {
     <>
       <div className='body-home'>
         <div className="section-60">
-        <CWelcomBlock name={profile.name} />
+          <CWelcomBlock name={profile.name} />
+
+          <div className='block-home-btns'>
+            <div id='btn-reservations'>
+              <div id='btn-title' onClick={btnReservations}>
+                <h4>Reservations</h4>
+              </div>
+              <div id='btn-text'>
+                <p>make a new reservation</p>
+              </div>
+            </div>
+            <div id={btnToAccess ?'btn-exit' : 'btn-access'}>
+              <div className='btn-access-title-text' onClick={btnEntryPopUp}>
+                <div>
+                  <h4 id='btn-title'>{btnToAccess ? 'Exit' : 'Access'}</h4>
+                </div>
+                <div>
+                  <p id='btn-text'>choose the room</p>
+                </div>
+              </div>
+              <div className='btn-access-icon'>
+              </div>
+            </div>
+          </div>
 
         </div>
         <div className="section-40">
-
           <CVisitsView numVisits={numVisits} visits={visits} />
+
         </div>
       </div>
+
+
 
 
       <CInputs type='button' value='Reservations' name='reservations' onClick={btnReservations} />
