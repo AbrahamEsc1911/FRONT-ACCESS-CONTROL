@@ -33,3 +33,21 @@ export const exit = async (token) => {
         console.error(`Error fetching data ${error}`)
     }
 }
+
+export const createNewReservation = async (token, roomId, body) => {
+    try {
+        const response = await fetch(`${URL}/reservation/${roomId}`, {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(body)
+        })
+
+        return await response.json()
+        
+    } catch (error) {
+        console.error(`Error fetching data ${error}`)
+    }
+}
