@@ -31,7 +31,7 @@ export const MyReservations = () => {
       bringUserData()
 
     } else {
-      navigate('./login')
+      navigate('/start')
     }
 
   }, [])
@@ -50,6 +50,7 @@ export const MyReservations = () => {
             <div>Hora de entrada: {entryDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
             <div>Fecha de salida: {exitDate.toLocaleDateString()}</div>
             <div>Hora de salida: {exitDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+            <div className={showServerMessage ? '' : 'hidden-content'}>{serverMessage}</div>
           </div>
         })}
       </div>

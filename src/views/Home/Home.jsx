@@ -72,12 +72,12 @@ export const Home = () => {
       };
       homeData();
     } else {
-      navigate('./login')
+      navigate('/start')
     }
   }, [])
 
   const btnReservations = () => {
-    navigate('./reservations')
+    navigate('/reservations')
   }
 
   const btnEntryPopUp = async () => {

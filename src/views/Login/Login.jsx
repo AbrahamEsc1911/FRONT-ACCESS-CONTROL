@@ -45,7 +45,7 @@ const Login = () => {
           tokenData: tokenDecoded
         };
         localStorage.setItem("passport", JSON.stringify(passport))
-        navigate('/home')
+        navigate('/')
         setCredentialsIncorrect(false)
       } else {
         setCredentialsIncorrect(true)

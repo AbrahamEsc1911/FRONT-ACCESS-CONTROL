@@ -38,6 +38,8 @@ export const Reservations = () => {
         }
       };
       bringElements()
+    } else {
+      navigate('/start')
     }
 
   }, [])

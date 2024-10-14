@@ -47,14 +47,13 @@ export const Register = () => {
             setErroMessage(false)
 
             const response = await register(credentials);
-            
+
             if (response.success) {
                 navigate("/login")
             } else {
                 setMessageServer(true)
             }
         }
-
     }
 
     return (
