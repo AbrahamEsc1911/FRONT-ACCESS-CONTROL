@@ -8,7 +8,7 @@ export const CSelect = ({ name, className, onChange, category, options }) => {
             <select defaultValue="" name={name} className={className} onChange={onChange}>
                 <option disabled hidden value="">{category}</option>
                 {options.map((element) => {
-                    return <option value={element.id} key={element.id}>{element.name}</option>
+                    return <option value={element.id} key={element.id}>{element.room}</option>
                 })
                 }
             </select>
