@@ -8,9 +8,14 @@ export const Body = () => {
   return (
     <>
     <Routes>
+      <Route path='/*'/>
+      <Route path='/' element={<Home />} />
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/home' element={<Home />} />
+      <Route path='/reservations'/>
+      <Route path='/my-reservations'/>
+      <Route path='/start'/>
+      <Route path='/profile'/>
     </Routes>
     </>
   )
