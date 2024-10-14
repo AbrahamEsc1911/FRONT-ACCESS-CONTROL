@@ -1,8 +1,17 @@
 import React from 'react'
 import { CNavigation } from '../../components/CNavigation/CNavigation'
 import './NavBar.css'
+import { useNavigate } from 'react-router-dom'
 
 export const NavBar = () => {
+
+    const navigate = useNavigate()
+
+    const btnLogout = () => {
+        localStorage.removeItem("passport");
+        navigate('/login')
+    }
+
     return (
         <>
             <div className='nav-main-content'>
@@ -15,7 +24,7 @@ export const NavBar = () => {
                     <div ><CNavigation path='/my-reservations' content={<img className='nav-icon-small' src="../images/historie.svg" alt="home-icon-nav"/>} /></div>
                 </div>
                 <div className='nav-exit'>
-                <div ><CNavigation path='/' content={<img className='nav-icon-middle' src="../images/exit.svg" alt="home-icon-nav"/>} /></div>
+                <div onClick={btnLogout}><CNavigation path='/' content={<img className='nav-icon-middle' src="../images/exit.svg" alt="home-icon-nav"/>}/></div>
                 </div>
             </div>
         </>
