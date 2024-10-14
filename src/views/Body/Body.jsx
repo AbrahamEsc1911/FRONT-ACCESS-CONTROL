@@ -7,12 +7,13 @@ import { Reservations } from '../Reservations/Reservations'
 import { MyReservations } from '../MyReservations/MyReservations'
 import { Profile } from '../Profile/Profile'
 import { Start } from '../Start/Start'
+import { NotFound } from '../NotFound/NotFound'
 
 export const Body = () => {
   return (
     <>
     <Routes>
-      <Route path='/*'/>
+      <Route path='/*' element={<NotFound />}/>
       <Route path='/' element={<Home />} />
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
