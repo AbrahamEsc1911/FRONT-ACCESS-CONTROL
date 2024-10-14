@@ -5,7 +5,8 @@ import Login from '../Login/Login'
 import { Home } from '../Home/Home'
 import { Reservations } from '../Reservations/Reservations'
 import { MyReservations } from '../MyReservations/MyReservations'
-import { profile } from '../Profile/Profile'
+import { Profile } from '../Profile/Profile'
+import { Start } from '../Start/Start'
 
 export const Body = () => {
   return (
