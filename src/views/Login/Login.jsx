@@ -1,12 +1,14 @@
 import './Login.css'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { jwtDecode } from "jwt-decode";
 import { CInputs } from '../../components/CInputs/CInputs'
 import { login } from '../../Services/auth.services'
 import { useNavigate } from 'react-router-dom'
+import { NavBarContext } from '../../Context/NavBarContext/NavBarContext';
 
 const Login = () => {
 
+  const {setNavBar, navBar} = useContext(NavBarContext)
   const [credentials, setCredentials] = useState(
     {
       email: "",
@@ -45,6 +47,7 @@ const Login = () => {
           tokenData: tokenDecoded
         };
         localStorage.setItem("passport", JSON.stringify(passport))
+        setNavBar(true)
         navigate('/')
         setCredentialsIncorrect(false)
       } else {

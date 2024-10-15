@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { userProfile } from '../../Services/user.services'
+import { NavBarContext } from '../../Context/NavBarContext/NavBarContext'
 
 export const Profile = () => {
 
@@ -10,6 +11,7 @@ export const Profile = () => {
     token = passport.token
   }
 
+  const {navBar, setNavBar} = useContext(NavBarContext)
   const navigate = useNavigate()
   const [userDataProfile, setUserDataProfile] = useState({
     name: "",
@@ -23,6 +25,7 @@ export const Profile = () => {
     if (passport) {
       const bringUserData = async () => {
         const bringUserProfile = await userProfile(token)
+        setNavBar(true)
         if (bringUserProfile.success) {
           setUserDataProfile(bringUserProfile.data)
         } else {
