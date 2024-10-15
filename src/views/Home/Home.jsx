@@ -8,6 +8,8 @@ import { getAllRooms } from '../../Services/room.services'
 import { access, exit } from '../../Services/access.services'
 import { CVisitsView } from '../../components/CVisitsView/CVisitsView'
 import { CWelcomBlock } from '../../components/CWelcomBlock/CWelcomBlock'
+import { CTitleForStats } from '../../components/CTitleForStats/CTitleForStats'
+import { CBlockMain } from '../../components/CBlockMain/CBlockMain'
 
 export const Home = () => {
   const passport = JSON.parse(localStorage.getItem("passport"))
@@ -126,7 +128,7 @@ export const Home = () => {
                 <p>make a new reservation</p>
               </div>
             </div>
-            <div id={btnToAccess ?'btn-exit' : 'btn-access'}>
+            <div id={btnToAccess ? 'btn-exit' : 'btn-access'}>
               <div className='btn-access-title-text' onClick={btnEntryPopUp}>
                 <div>
                   <h4 id='btn-title'>{btnToAccess ? 'Exit' : 'Access'}</h4>
@@ -139,6 +141,11 @@ export const Home = () => {
               </div>
             </div>
           </div>
+          
+          <CBlockMain content={
+            <CTitleForStats title1='PLACE' title2='ENTRY' title3='E. HOUR' title4='EXIT' title5='EX. HOUR'/>
+          }/>
+          
 
         </div>
         <div className="section-40">
@@ -149,7 +156,7 @@ export const Home = () => {
               <h2>Smart Building</h2>
             </div>
             <div id='btn-box'>
-              <CInputs type='button' value='Know more' className='btn-about-more'/>
+              <CInputs type='button' value='Know more' className='btn-about-more' />
             </div>
           </div>
         </div>
@@ -167,6 +174,8 @@ export const Home = () => {
         <p className={accessNotGranted ? '' : 'hidden-content'}>acccess not granted because the room is already full</p>
         <CInputs type='button' value='Entry' name='entry' onClick={entryRoom} />
       </div>
+
+
 
       <div>
         {!noHistories && historiesUser?.length > 0 && (
