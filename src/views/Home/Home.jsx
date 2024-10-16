@@ -12,6 +12,7 @@ import { CTitleForStats } from '../../components/CTitleForStats/CTitleForStats'
 import { CBlockMain } from '../../components/CBlockMain/CBlockMain'
 import { CTextForStats } from '../../components/CTextForStats/CTextForStats'
 import { CSection60 } from '../../components/CSection60/CSection60'
+import { CSection40 } from '../../components/CSection40/CSection40'
 
 export const Home = () => {
   const passport = JSON.parse(localStorage.getItem("passport"))
@@ -118,73 +119,75 @@ export const Home = () => {
   return (
     <>
       <div className='body-home'>
-       
-          <CSection60 content={
-            <div>
-              <CWelcomBlock name={profile.name} />
-              <div className='block-home-btns'>
-                <div id='btn-reservations'>
-                  <div id='btn-title' onClick={btnReservations}>
-                    <h4>Reservations</h4>
-                  </div>
-                  <div id='btn-text'>
-                    <p>make a new reservation</p>
-                  </div>
+
+        <CSection60 content={
+          <div>
+            <CWelcomBlock name={profile.name} />
+            <div className='block-home-btns'>
+              <div id='btn-reservations'>
+                <div id='btn-title' onClick={btnReservations}>
+                  <h4>Reservations</h4>
                 </div>
-                <div id={btnToAccess ? 'btn-exit' : 'btn-access'}>
-                  <div className='btn-access-title-text' onClick={btnEntryPopUp}>
-                    <div>
-                      <h4 id='btn-title'>{btnToAccess ? 'Exit' : 'Access'}</h4>
-                    </div>
-                    <div>
-                      <p id='btn-text'>choose the room</p>
-                    </div>
-                  </div>
-                  <div className='btn-access-icon'>
-                  </div>
+                <div id='btn-text'>
+                  <p>make a new reservation</p>
                 </div>
               </div>
-
-              <div className='title-stats-panel'>
-                <div className='title-pantel'>
-                  <h3>
-                    Histories visits
-                  </h3>
+              <div id={btnToAccess ? 'btn-exit' : 'btn-access'}>
+                <div className='btn-access-title-text' onClick={btnEntryPopUp}>
+                  <div>
+                    <h4 id='btn-title'>{btnToAccess ? 'Exit' : 'Access'}</h4>
+                  </div>
+                  <div>
+                    <p id='btn-text'>choose the room</p>
+                  </div>
+                </div>
+                <div className='btn-access-icon'>
                 </div>
               </div>
-
-              <CBlockMain content={
-                <div className='stats-panel'>
-                  <CTitleForStats title1='PLACE' title2='ENTRY' title3='E. HOUR' title4='EXIT' title5='EX. HOUR' />
-                  {!noHistories && historiesUser?.length > 0 && (
-                    historiesUser.map((records) => {
-                      const entryDate = new Date(records.entry_date);
-                      const exitDate = new Date(records.exit_date);
-                      return (
-
-                        <div key={records.id}>
-                          <CTextForStats text1={records.room.room} text2={entryDate.toLocaleDateString()} text3={entryDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} text4={exitDate.toLocaleDateString()} text5={exitDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} />
-                        </div>
-                      );
-                    })
-                  )}
-                </div>
-              } />
             </div>
-          }/>
-          
-        <div className="section-40">
-          <CVisitsView numVisits={numVisits} visits={visits} />
 
-          <div className='about-building'>
-            <div>
-              <h2>Smart Building</h2>
+            <div className='title-stats-panel'>
+              <div className='title-pantel'>
+                <h3>
+                  Histories visits
+                </h3>
+              </div>
             </div>
-            <div id='btn-box'>
-              <CInputs type='button' value='Know more' className='btn-about-more' />
+
+            <CBlockMain content={
+              <div className='stats-panel'>
+                <CTitleForStats title1='PLACE' title2='ENTRY' title3='E. HOUR' title4='EXIT' title5='EX. HOUR' />
+                {!noHistories && historiesUser?.length > 0 && (
+                  historiesUser.map((records) => {
+                    const entryDate = new Date(records.entry_date);
+                    const exitDate = new Date(records.exit_date);
+                    return (
+
+                      <div key={records.id}>
+                        <CTextForStats text1={records.room.room} text2={entryDate.toLocaleDateString()} text3={entryDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} text4={exitDate.toLocaleDateString()} text5={exitDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} />
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            } />
+          </div>
+        } />
+
+        <CSection40 content={
+          <div>
+            <CVisitsView numVisits={numVisits} visits={visits} />
+
+            <div className='about-building'>
+              <div>
+                <h2>Smart Building</h2>
+              </div>
+              <div id='btn-box'>
+                <CInputs type='button' value='Know more' className='btn-about-more' />
+              </div>
             </div>
           </div>
-        </div>
+        } />
       </div>
 
       {/* COMPONETIZAR ESTE MENU DESPLEGABLE */}
