@@ -182,3 +182,32 @@
     height: 2.1rem;
 
 }
+
+.stats-panel {
+    width: 90%;
+}
+
+.title-stats-panel {
+    width: 100%;
+    height: 1.5rem;
+
+    /* background-color: red; */
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title-pantel{
+    width: 8rem;
+    height: 2rem;
+    /* background-color: orange; */
+
+    display: flex;
+    align-items: center;
+}

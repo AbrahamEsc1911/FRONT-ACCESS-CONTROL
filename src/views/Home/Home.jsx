@@ -10,6 +10,7 @@ import { CVisitsView } from '../../components/CVisitsView/CVisitsView'
 import { CWelcomBlock } from '../../components/CWelcomBlock/CWelcomBlock'
 import { CTitleForStats } from '../../components/CTitleForStats/CTitleForStats'
 import { CBlockMain } from '../../components/CBlockMain/CBlockMain'
+import { CTextForStats } from '../../components/CTextForStats/CTextForStats'
 
 export const Home = () => {
   const passport = JSON.parse(localStorage.getItem("passport"))
@@ -141,11 +142,32 @@ export const Home = () => {
               </div>
             </div>
           </div>
-          
+
+          <div className='title-stats-panel'>
+            <div className='title-pantel'>
+              <h3>
+                Histories visits
+              </h3>
+            </div>
+          </div>
+
           <CBlockMain content={
-            <CTitleForStats title1='PLACE' title2='ENTRY' title3='E. HOUR' title4='EXIT' title5='EX. HOUR'/>
-          }/>
-          
+            <div className='stats-panel'>
+              <CTitleForStats title1='PLACE' title2='ENTRY' title3='E. HOUR' title4='EXIT' title5='EX. HOUR' />
+              {!noHistories && historiesUser?.length > 0 && (
+                historiesUser.map((records) => {
+                  const entryDate = new Date(records.entry_date);
+                  const exitDate = new Date(records.exit_date);
+                  return (
+
+                    <div key={records.id}>
+                      <CTextForStats text1={records.room.room} text2={entryDate.toLocaleDateString()} text3={entryDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} text4={exitDate.toLocaleDateString()} text5={exitDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} />
+                    </div>
+                  );
+                })
+              )}
+            </div>
+          } />
 
         </div>
         <div className="section-40">
@@ -176,26 +198,6 @@ export const Home = () => {
       </div>
 
 
-
-      <div>
-        {!noHistories && historiesUser?.length > 0 && (
-          historiesUser.map((records) => {
-            return (
-              <div key={records.id}>
-                <div>
-                  {records.room.room}
-                </div>
-                <div>
-                  {records.entry_date}
-                </div>
-                <div>
-                  {records.exit_date}
-                </div>
-              </div>
-            );
-          })
-        )}
-      </div>
     </>
   )
 }
