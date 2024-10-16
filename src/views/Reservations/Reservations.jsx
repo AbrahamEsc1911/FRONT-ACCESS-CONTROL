@@ -5,6 +5,10 @@ import { CSelect } from '../../components/CSelect/CSelect'
 import { CInputs } from '../../components/CInputs/CInputs'
 import { createNewReservation } from '../../Services/access.services'
 import { useNavigate } from 'react-router-dom'
+import { CSection60 } from '../../components/CSection60/CSection60'
+import { CSection40 } from '../../components/CSection40/CSection40'
+import { CBlockMain } from '../../components/CBlockMain/CBlockMain'
+import { CSection75 } from '../../components/CSection75/CSection75'
 
 export const Reservations = () => {
   const passport = JSON.parse(localStorage.getItem("passport"))
@@ -81,21 +85,61 @@ export const Reservations = () => {
     setShowBtnMyReservations(false)
     setShowServerMessage(false)
     setRoomId("")
-    setDateForReservation({entry_date: "", exit_date: ""})
+    setDateForReservation({ entry_date: "", exit_date: "" })
   }
 
   const today = new Date().toISOString().slice(0, 16);
 
   return (
     <>
-      <CSelect name={'room_id'} category={'All Rooms'} options={allRooms} onChange={handleRoomId} />
-      <CInputs type='datetime-local' name='entry_date' onChange={handleEvents} min={today} />
-      <CInputs type='datetime-local' name='exit_date' onChange={handleEvents} min={today} />
-      <p className={errorMessage ? "" : "hidden-content"}>All values are required</p>
-      <p className={showServerMessage ? "" : "hidden-content"}>{serverMessage}</p>
-      <div className={showBtnMyReservations ? "hidden-content" : ""}><CInputs type='button' name='save' value='Send' onClick={sendBtn} /></div>
-      <div className={showBtnMyReservations ? "" : "hidden-content"}><CInputs type='button' name='see reservations' value='my reservations' onClick={myReservationsBtn} /></div>
-      <div className={showBtnMyReservations ? "" : "hidden-content"}><CInputs type='button' name='back' value='back' onClick={btnBack} /></div>
+      <div className='body-reservation'>
+        <CSection75 content={
+          <>
+            <div>
+              <h2>Make a reservation</h2>
+            </div>
+            <div className='main-content-reservation'>
+              <CBlockMain content={
+                <div>
+
+                  <div className='content-reservation'>
+                    <div className='block-input'>
+                      <div>Place</div>
+                      <div>
+                        <CSelect name={'room_id'} category={'All Rooms'} options={allRooms} onChange={handleRoomId} />
+                      </div>
+                    </div>
+                    <div className='block-input'>
+                      <div>Entry date</div>
+                      <div>
+                        <CInputs type='datetime-local' name='entry_date' onChange={handleEvents} min={today} />
+                      </div>
+                    </div>
+                    <div className='block-input'>
+                      <div>Exit date</div>
+                      <div>
+                        <CInputs type='datetime-local' name='exit_date' onChange={handleEvents} min={today} />
+                      </div>
+                    </div>
+                    <p className={errorMessage ? "" : "hidden-content"}>All values are required</p>
+                    <p className={showServerMessage ? "" : "hidden-content"}>{serverMessage}</p>
+                    <div className={showBtnMyReservations ? "hidden-content" : ""}><CInputs type='button' name='save' value='Send' onClick={sendBtn} /></div>
+                    <div className={showBtnMyReservations ? "" : "hidden-content"}><CInputs type='button' name='see reservations' value='my reservations' onClick={myReservationsBtn} /></div>
+                    <div className={showBtnMyReservations ? "" : "hidden-content"}><CInputs type='button' name='back' value='back' onClick={btnBack} /></div>
+                  </div>
+                </div>
+              } />
+              
+              <div className='content-info'>
+              </div>
+            </div>
+
+          </>
+        } />
+
+
+      </div>
+
     </>
   )
 }

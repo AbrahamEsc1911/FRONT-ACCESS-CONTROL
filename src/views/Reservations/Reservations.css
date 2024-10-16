@@ -1,3 +1,44 @@
 .hidden-content {
     display: none;
 }
+
+.body-reservation {
+    width: 100%;
+
+    padding-top: 2.5rem;
+    display: flex;
+}
+
+.main-content-reservation {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.content-reservation {
+    width: 20vw;
+    height:20rem;
+
+    /* background-color: orange; */
+
+    display: flex;
+    flex-direction: column;
+}
+
+.content-info {
+    width: 40%;
+    height:20rem;
+
+    background-color: rgb(15, 139, 114);
+    margin-left: 2rem;
+}
+
+.block-input {
+    width: 100%;
+    height: auto;
+
+    /* background-color: rgb(191, 0, 255); */
+}
