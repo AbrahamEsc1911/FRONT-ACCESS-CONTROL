@@ -1,3 +1,123 @@
 .hidden-content {
     display: none;
 }
+
+
+.login-view-main {
+    width: 100vw;
+    height: 100vh;
+  
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  @media (max-width: 1100px) {
+    .login-view-main {
+      width: 100vw;
+      height: auto;
+  
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+  
+  .section-login-container {
+    width: 50vw;
+    height: auto;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media (max-width: 1100px) {
+    .section-login-container {
+      width: 60vw;
+      height: auto;
+    }
+  }
+  
+  @media (max-width: 920px) {
+    .section-login-container {
+      width: 60vw;
+      height: auto;
+    }
+  }
+  
+  .section-login-image {
+    width: 50vw;
+    height: auto;
+  
+    display: flex;
+    align-items: center;
+  }
+  
+  @media (max-width: 1100px) {
+    .section-login-image {
+      width: 80vw;
+      height: auto;
+  
+      display: flex;
+      justify-content: center;
+  
+      padding-top: 3rem;
+    }
+  }
+  
+  @media (max-width: 920px) {
+    .section-login-image {
+      width: 100vw;
+      height: auto;
+  
+      display: flex;
+      justify-content: center;
+  
+      padding-top: 3rem;
+    }
+  }
+  
+  .login-container {
+    width: auto;
+    height: 16rem;
+  
+    padding: 1rem;
+  
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .input-login {
+    height: auto;
+    width: 22rem;
+  
+    padding-top: 0.5rem;
+    padding-bottom: 0.4rem;
+    padding-left: 0.8rem;
+    border-radius: 0.2rem;
+    background-color: #f4f4f4;
+    border: none;
+  }
+  
+  .button-login {
+    height: 2.4rem;
+    width: 8rem;
+  
+    border-radius: 3rem;
+    border: none;
+    margin-bottom: 1rem;
+  
+    background-color: #3461fb;
+    color: white;
+    font-weight: 400;
+  
+    cursor: pointer;
+  }
+  
+  .button-login:hover {
+    background-color: #2b53d5;
+  }
+  

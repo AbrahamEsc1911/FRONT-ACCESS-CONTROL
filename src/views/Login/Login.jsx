@@ -5,6 +5,7 @@ import { CInputs } from '../../components/CInputs/CInputs'
 import { login } from '../../Services/auth.services'
 import { useNavigate } from 'react-router-dom'
 import { NavBarContext } from '../../Context/NavBarContext/NavBarContext';
+import { CBlockMain } from '../../components/CBlockMain/CBlockMain';
 
 const Login = () => {
 
@@ -56,15 +57,69 @@ const Login = () => {
     }
   }
 
+  const goToRegister = () => {
+    navigate('/register')
+  }
+
   return (
     <>
-      <h1>Login</h1>
-      <CInputs type='text' placeholder='Email' name='email' onChange={handleChange} />
-      <CInputs type='password' placeholder='Password' name='password' onChange={handleChange} />
-      <p className={valuesRequired ? '' : 'hidden-content'}>Email and password are required</p>
-      <p className={passwordIncorrect ? '' : 'hidden-content'}>password incorrect</p>
-      <p className={credentialsIncorrect ? '' : 'hidden-content'}>Email or pasword invalid</p>
-      <CInputs type='button' value='login' name='login' onClick={loggin} />
+      <div className="login-view-main">
+        <div className="section-login-container">
+          <CBlockMain
+            content={
+              <div className="login-container">
+                <h2 className="text-no-margin">Login</h2>
+                <div>
+                  <CInputs
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    onChange={handleChange}
+                    className="input-login"
+                  />
+                </div>
+                <div>
+                  <CInputs
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    onChange={handleChange}
+                    className="input-login"
+                  />
+                </div>
+                <p className={valuesRequired ? "" : "hidden-content"}>
+                  Email and password are required.
+                </p>
+                <p className={passwordIncorrect ? "" : "hidden-content"}>
+                  The password must be greater than 8 and less than 12
+                  characters.
+                </p>
+                <p className={passwordIncorrect ? "" : "hidden-content"}>
+                  Incorrect email or password.
+                </p>
+                <div>
+                  <CInputs
+                    type="button"
+                    name="login"
+                    value="Login"
+                    onClick={loggin}
+                    className="button-login"
+                  />
+                  <p className="text-no-margin">
+                    Don't have an acoutn yet?{" "}
+                    <span className="special-text" onClick={goToRegister}>
+                      Sing up
+                    </span>
+                  </p>
+                </div>
+              </div>
+            }
+          />
+        </div>
+        <div className="section-login-image">
+          <img src="./images/logonaves.svg" alt="login-main-image" id="banner-home-main" />
+        </div>
+      </div>
     </>
   )
 }
