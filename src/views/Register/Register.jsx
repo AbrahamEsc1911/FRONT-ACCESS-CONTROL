@@ -4,6 +4,7 @@ import { register } from '../../Services/auth.services'
 import './Register.css'
 
 import React, { useState } from 'react'
+import { CBlockMain } from '../../components/CBlockMain/CBlockMain'
 
 export const Register = () => {
 
@@ -21,6 +22,7 @@ export const Register = () => {
     const [passwordLong, setPasswordLong] = useState(false)
     const [allAreRequired, setAllAreRequired] = useState(false)
     const [messageServer, setMessageServer] = useState(false)
+    const [erroMessage, setErroMessage] = useState(false)
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -56,19 +58,85 @@ export const Register = () => {
         }
     }
 
+    const goToLogin = () => {
+        navigate('/login')
+    }
+
     return (
         <>
-            <h1>Register</h1>
-            <CInputs type='text' placeholder='Name*' name='name' onChange={handleChange} />
-            <CInputs type='text' placeholder='StartUp*' name='StartUp' onChange={handleChange} />
-            <CInputs type='text' placeholder='DNI*' name='dni' onChange={handleChange} />
-            <CInputs type='number' placeholder='phone*' name='phone' onChange={handleChange} />
-            <CInputs type='email' placeholder='Email*' name='email' onChange={handleChange} />
-            <CInputs type='password' placeholder='Password' name='password' onChange={handleChange} />
-            <p className={passwordLong ? "" : 'hident-content'}>password most be between 8 and 12 characters</p>
-            <p className={allAreRequired ? "" : 'hident-content'}>all fields are required</p>
-            <p className={messageServer ? "" : 'hident-content'}>try with another email</p>
-            <CInputs type='button' value='send' name='send' onClick={sendRegister} />
+
+            <div className="register-view-main">
+        <div className="section-register-container">
+          <CBlockMain
+            content={
+              <div className="register-container">
+                <h2 className="text-no-margin">Sing Up</h2>
+                <CInputs
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  onChange={handleChange}
+                  className="input-register"
+                />
+                <CInputs
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  onChange={handleChange}
+                  className="input-register"
+                />
+                <CInputs
+                  type="email"
+                  name="StartUp"
+                  placeholder="StartUp"
+                  onChange={handleChange}
+                  className="input-register"
+                />
+                <CInputs
+                  type="text"
+                  name="phone"
+                  placeholder="phone"
+                  onChange={handleChange}
+                  className="input-register"
+                />
+                <CInputs
+                  type="text"
+                  name="dni"
+                  placeholder="dni"
+                  onChange={handleChange}
+                  className="input-register"
+                />
+                <CInputs
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  onChange={handleChange}
+                  className="input-register"
+                />
+                <p className={allAreRequired ? "" : "hident-content"}>
+                  Email y contraseña son requeridos
+                </p>
+                <p className={passwordLong ? "" : "hident-content"}>
+                  La contraseña debe ser entre 8 y 12 caracteres
+                </p>
+                <p className={messageServer ? "" : "hident-content"}>try with another email</p>
+                <div>
+                  <CInputs
+                    type="button"
+                    value="Sing Up"
+                    onClick={sendRegister}
+                    className="button-register"
+                  />
+                  <p className="text-no-margin">Already have an acount? <span className="special-text" onClick={goToLogin}>Login</span></p>
+                </div>
+              </div>
+            }
+          />
+        </div>
+        <div className="section-register-image">
+          <img src="./images/logonaves.svg" alt="image-main-register" id="banner-home-main"/>
+        </div>
+      </div>
         </>
     )
 }
