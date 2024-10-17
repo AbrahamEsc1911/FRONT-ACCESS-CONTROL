@@ -10,6 +10,7 @@ import { CSection75 } from '../../components/CSection75/CSection75'
 import { CSection25 } from '../../components/CSection25/CSection25'
 import { CImageBlock } from '../../components/CImageBlock/CImageBlock'
 import { CVisitsView } from '../../components/CVisitsView/CVisitsView'
+import { CWelcomBlock } from '../../components/CWelcomBlock/CWelcomBlock'
 
 export const Reservations = () => {
   const passport = JSON.parse(localStorage.getItem("passport"))
@@ -96,13 +97,13 @@ export const Reservations = () => {
       <div className='body-reservation'>
         <CSection75 content={
           <>
-            <div>
+          <CWelcomBlock />
+            <div className='title-stats-panel'>
               <h2>Make a reservation</h2>
             </div>
             <div className='main-content-reservation'>
               <CBlockMain content={
                 <div>
-
                   <div className='content-reservation'>
                     <div className='block-input'>
                       <div>Place</div>
@@ -130,7 +131,7 @@ export const Reservations = () => {
                   </div>
                 </div>
               } />
-              
+
               <div className='content-info'>
               </div>
             </div>
@@ -139,9 +140,9 @@ export const Reservations = () => {
         } />
         <CSection25 content={
           <div>
-          <CVisitsView />
-          <CImageBlock />
-        </div>
+            <CVisitsView />
+            <CImageBlock />
+          </div>
         } />
       </div>
 

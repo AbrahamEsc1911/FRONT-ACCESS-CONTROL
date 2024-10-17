@@ -42,3 +42,12 @@
 
     /* background-color: rgb(191, 0, 255); */
 }
+
+.title-pantel {
+    width: 20rem;
+    height: 2rem;
+    /* background-color: orange; */
+
+    display: flex;
+    align-items: center;
+}

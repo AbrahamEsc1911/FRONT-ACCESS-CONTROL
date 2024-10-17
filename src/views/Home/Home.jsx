@@ -112,7 +112,7 @@ export const Home = () => {
 
         <CSection60 content={
           <div>
-            <CWelcomBlock name={profile.name} />
+            <CWelcomBlock/>
             <div className='block-home-btns'>
               <div id='btn-reservations'>
                 <div id='btn-title' onClick={btnReservations}>
