@@ -5,10 +5,11 @@ import { CSelect } from '../../components/CSelect/CSelect'
 import { CInputs } from '../../components/CInputs/CInputs'
 import { createNewReservation } from '../../Services/access.services'
 import { useNavigate } from 'react-router-dom'
-import { CSection60 } from '../../components/CSection60/CSection60'
-import { CSection40 } from '../../components/CSection40/CSection40'
 import { CBlockMain } from '../../components/CBlockMain/CBlockMain'
 import { CSection75 } from '../../components/CSection75/CSection75'
+import { CSection25 } from '../../components/CSection25/CSection25'
+import { CImageBlock } from '../../components/CImageBlock/CImageBlock'
+import { CVisitsView } from '../../components/CVisitsView/CVisitsView'
 
 export const Reservations = () => {
   const passport = JSON.parse(localStorage.getItem("passport"))
@@ -136,8 +137,12 @@ export const Reservations = () => {
 
           </>
         } />
-
-
+        <CSection25 content={
+          <div>
+          <CVisitsView />
+          <CImageBlock />
+        </div>
+        } />
       </div>
 
     </>
