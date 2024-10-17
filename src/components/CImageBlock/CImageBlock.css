@@ -39,3 +39,9 @@
     display: flex;
     justify-content: center;
 }
+
+.btn-about-more:hover {
+    width: 7.3rem;
+    height: 2.1rem;
+
+}

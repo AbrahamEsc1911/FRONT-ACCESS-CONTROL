@@ -1,5 +1,6 @@
 import React from 'react'
 import './CImageBlock.css'
+import { CInputs } from '../CInputs/CInputs'
 
 export const CImageBlock = () => {
   return (

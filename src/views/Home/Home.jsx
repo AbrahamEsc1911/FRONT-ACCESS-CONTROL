@@ -13,6 +13,7 @@ import { CBlockMain } from '../../components/CBlockMain/CBlockMain'
 import { CTextForStats } from '../../components/CTextForStats/CTextForStats'
 import { CSection60 } from '../../components/CSection60/CSection60'
 import { CSection40 } from '../../components/CSection40/CSection40'
+import { CImageBlock } from '../../components/CImageBlock/CImageBlock'
 
 export const Home = () => {
   const passport = JSON.parse(localStorage.getItem("passport"))
@@ -177,15 +178,7 @@ export const Home = () => {
         <CSection40 content={
           <div>
             <CVisitsView numVisits={numVisits} visits={visits} />
-
-            <div className='about-building'>
-              <div>
-                <h2>Smart Building</h2>
-              </div>
-              <div id='btn-box'>
-                <CInputs type='button' value='Know more' className='btn-about-more' />
-              </div>
-            </div>
+            <CImageBlock />
           </div>
         } />
       </div>
