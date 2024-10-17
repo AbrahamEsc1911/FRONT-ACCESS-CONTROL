@@ -39,6 +39,7 @@ export const Home = () => {
   const [accessNotGranted, setAccessNotGranted] = useState(false)
   const [historiesUser, setHistoriesUser] = useState([])
   const [noHistories, setNoHistories] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     if (passport) {
@@ -85,6 +86,7 @@ export const Home = () => {
       }
     } else {
       setPopUp(true)
+      setIsModalOpen(true)
     }
   }
 
@@ -100,10 +102,15 @@ export const Home = () => {
       const accessing = await access(roomSelected, token)
       if (accessing.success) {
         setbtnToAccess(true)
+        setIsModalOpen(false)
       } else if (accessing.message === 'acccess not granted because the room is already full') {
         setAccessNotGranted(true)
       }
     }
+  }
+
+  const closePopUp = () => {
+    setIsModalOpen(false)
   }
 
   return (
@@ -112,7 +119,7 @@ export const Home = () => {
 
         <CSection60 content={
           <div>
-            <CWelcomBlock/>
+            <CWelcomBlock />
             <div className='block-home-btns'>
               <div id='btn-reservations'>
                 <div id='btn-title' onClick={btnReservations}>
@@ -173,15 +180,28 @@ export const Home = () => {
 
       {/* COMPONETIZAR ESTE MENU DESPLEGABLE */}
       <div>
-        <select name="Rooms" id="rooms" value={roomSelected} onChange={handledRoomSelected}>
-          <option value="">Rooms..</option>
-          {roomsList.map((room) => {
-            return <option value={room.id} key={room.id} >{room.room}</option>
-          })}
-        </select>
-        <p className={valueRequiredForAccess ? '' : 'hidden-content'}>Value required</p>
-        <p className={accessNotGranted ? '' : 'hidden-content'}>acccess not granted because the room is already full</p>
-        <CInputs type='button' value='Entry' name='entry' onClick={entryRoom} />
+
+        {isModalOpen && (
+          <div className="modal-overlay">
+            <CBlockMain content={
+              <div>
+                <div className="modal-content">
+                  <button className="modal-close" onClick={closePopUp}>X</button>
+                  <select name="Rooms" id="rooms" value={roomSelected} onChange={handledRoomSelected}>
+                    <option value="">Rooms..</option>
+                    {roomsList.map((room) => (
+                      <option value={room.id} key={room.id}>{room.room}</option>
+                    ))}
+                  </select>
+                  <p className={valueRequiredForAccess ? '' : 'hidden-content'}>Value required</p>
+                  <p className={accessNotGranted ? '' : 'hidden-content'}>Access not granted because the room is already full</p>
+                  <CInputs type='button' value='Entry' name='entry' onClick={entryRoom} />
+                </div>
+              </div>
+            } />
+          </div>
+        )}
+
       </div>
     </>
   )
