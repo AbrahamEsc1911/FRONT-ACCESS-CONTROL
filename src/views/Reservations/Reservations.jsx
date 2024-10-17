@@ -131,9 +131,6 @@ export const Reservations = () => {
                   </div>
                 </div>
               } />
-
-              <div className='content-info'>
-              </div>
             </div>
 
           </>

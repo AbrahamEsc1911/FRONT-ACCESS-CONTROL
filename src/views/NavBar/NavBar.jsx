@@ -21,7 +21,7 @@ export const NavBar = () => {
         <>
             <div className='nav-main-content'>
                 <div className='nav-logo'>
-                    logo
+                    <img src="../images/logo.png" alt="" className='logo-center'/>
                 </div>
                 <div className='nav-elements'>
                     <div ><CNavigation path='/' content={<img className='nav-icon-small' src="../images/home.svg" alt="home-icon-nav"/>} /></div>
