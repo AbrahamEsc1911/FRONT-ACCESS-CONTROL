@@ -27,6 +27,7 @@ export const NavBar = () => {
                     <div ><CNavigation path='/' content={<img className='nav-icon-small' src="../images/home.svg" alt="home-icon-nav"/>} /></div>
                     <div ><CNavigation path='/reservations' content={<img className='nav-icon-small' src="../images/reservation.svg" alt="home-icon-nav"/>} /></div>
                     <div ><CNavigation path='/my-reservations' content={<img className='nav-icon-small' src="../images/historie.svg" alt="home-icon-nav"/>} /></div>
+                    <div ><CNavigation path='/profile' content={<img className='nav-icon-small' src="../images/profile.svg" alt="home-icon-nav"/>} /></div>
                 </div>
                 <div className='nav-exit'>
                 <div onClick={btnLogout}><CNavigation path='/' content={<img className='nav-icon-middle' src="../images/exit.svg" alt="home-icon-nav"/>}/></div>
