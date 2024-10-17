@@ -1,7 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
+import './Profile.css'
 import { useNavigate } from 'react-router-dom'
 import { userProfile } from '../../Services/user.services'
 import { NavBarContext } from '../../Context/NavBarContext/NavBarContext'
+import { CWelcomBlock } from '../../components/CWelcomBlock/CWelcomBlock'
+import { CSectionOneProfile } from '../../components/CSectionOneProfile/CSectionOneProfile'
+import { CBlockMain } from '../../components/CBlockMain/CBlockMain'
 
 export const Profile = () => {
 
@@ -11,7 +15,7 @@ export const Profile = () => {
     token = passport.token
   }
 
-  const {navBar, setNavBar} = useContext(NavBarContext)
+  const { navBar, setNavBar } = useContext(NavBarContext)
   const navigate = useNavigate()
   const [userDataProfile, setUserDataProfile] = useState({
     name: "",
@@ -43,11 +47,15 @@ export const Profile = () => {
 
   return (
     <>
-      <div>name: {userDataProfile.name}</div>
-      <div>dni: {userDataProfile.dni}</div>
-      <div>email: {userDataProfile.email}</div>
-      <div>phone: {userDataProfile.phone}</div>
-      <div>StartUp: {userDataProfile.StartUp}</div>
+      <div className='body-profile'>
+        <CWelcomBlock />
+        <CBlockMain content={
+          <div>
+            <CSectionOneProfile name={userDataProfile.name} email={userDataProfile.email} phone={userDataProfile.phone} dni={userDataProfile.dni} StartUp={userDataProfile.StartUp} value={'edit'}/>
+          </div>
+        } />
+      </div>
+
     </>
   )
 }

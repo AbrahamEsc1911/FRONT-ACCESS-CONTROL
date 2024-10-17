@@ -1,0 +1,65 @@
+.section-two-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.section-two-block {
+    height: 3rem;
+    width: 17rem;
+
+    padding-top: 0.5rem;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.section-two-icon {
+    height: 3rem;
+    width: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-two-icon-size {
+    width: 1.2rem;
+}
+
+.section-two-text {
+    height: 3rem;
+    width: 13rem;
+
+    padding-left: 1rem;
+
+    display: flex;
+    align-items: center;
+}
+
+.p-section-two {
+    font-weight: 400;
+}
+
+.button-edit-profile {
+    height: 2.4rem;
+    width: 9rem;
+
+    border-radius: 3rem;
+    border: none;
+
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    background-color: #3461FB;
+    color: white;
+    font-weight: 400;
+
+    cursor: pointer;
+}
+
+.button-edit-profile:hover {
+    background-color: #1849ea;
+}
