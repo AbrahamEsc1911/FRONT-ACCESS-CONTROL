@@ -50,7 +50,7 @@
     width: 47%;
     height: 7rem;
 
-    background-color: blue;
+    background-color: rgb(196, 196, 196);
 
     border-radius: 2rem;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -65,7 +65,7 @@
     width: 47%;
     height: 7rem;
 
-    background-color: rgb(2, 2, 110);
+    background-color: rgb(2, 2, 255);
 
     border-radius: 2rem;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);

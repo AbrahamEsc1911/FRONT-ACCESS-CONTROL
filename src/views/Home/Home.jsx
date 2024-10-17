@@ -81,8 +81,10 @@ export const Home = () => {
   const btnEntryPopUp = async () => {
     if (btnToAccess) {
       const response = await exit(token)
+      const bringHistories = await userAccessHistories(1, token)
       if (response.success) {
         setbtnToAccess(false)
+        setHistoriesUser(bringHistories.data)
       }
     } else {
       setPopUp(true)
@@ -135,7 +137,7 @@ export const Home = () => {
                     <h4 id='btn-title'>{btnToAccess ? 'Exit' : 'Access'}</h4>
                   </div>
                   <div>
-                    <p id='btn-text'>choose the room</p>
+                    <p id='btn-text'>{btnToAccess ? 'you are in' : 'choose the room'}</p>
                   </div>
                 </div>
                 <div className='btn-access-icon'>
