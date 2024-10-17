@@ -31,8 +31,6 @@ export const Home = () => {
       phone: ""
     }
   )
-  const [visits, setVisits] = useState("visits this month.")
-  const [numVisits, setnumVisits] = useState("")
   const [popUp, setPopUp] = useState(false)
   const [roomsList, setRoomsList] = useState([])
   const [roomSelected, setRoomSelected] = useState('')
@@ -46,19 +44,12 @@ export const Home = () => {
     if (passport) {
       const homeData = async () => {
         const bringProfile = await userProfile(token)
-        const bringUserHistoriesMonth = await userMonthAccesses(token)
         const bringUserState = await userCurrentState(token)
         const bringRoomsList = await getAllRooms()
         const bringHistories = await userAccessHistories(1, token)
 
         if (bringProfile.success) {
           setProfile(bringProfile.data)
-        }
-
-        if (bringUserHistoriesMonth.success) {
-          setnumVisits(bringUserHistoriesMonth.data.length)
-        } else {
-          setnumVisits(0)
         }
 
         if (bringRoomsList.success) {
@@ -115,8 +106,6 @@ export const Home = () => {
     }
   }
 
-  console.log(historiesUser)
-
   return (
     <>
       <div className='body-home'>
@@ -163,7 +152,6 @@ export const Home = () => {
                     const entryDate = new Date(records.entry_date);
                     const exitDate = new Date(records.exit_date);
                     return (
-
                       <div key={records.id}>
                         <CTextForStats text1={records.room.room} text2={entryDate.toLocaleDateString()} text3={entryDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} text4={exitDate.toLocaleDateString()} text5={exitDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} />
                       </div>
@@ -177,7 +165,7 @@ export const Home = () => {
 
         <CSection40 content={
           <div>
-            <CVisitsView numVisits={numVisits} visits={visits} />
+            <CVisitsView />
             <CImageBlock />
           </div>
         } />
@@ -195,8 +183,6 @@ export const Home = () => {
         <p className={accessNotGranted ? '' : 'hidden-content'}>acccess not granted because the room is already full</p>
         <CInputs type='button' value='Entry' name='entry' onClick={entryRoom} />
       </div>
-
-
     </>
   )
 }
