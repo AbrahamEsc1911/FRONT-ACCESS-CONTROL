@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import './Start.css'
 import { CInputs } from '../../components/CInputs/CInputs'
 import { useNavigate } from 'react-router-dom'
 
@@ -23,17 +24,22 @@ export const Start = () => {
   }
 
   return (
-    <div>
-      
-      Access Control app for the Naves
-
-      <div>
-      <CInputs type='button' name='Register' value='Register' onClick={btnRegister} />
+    <>
+      <div className="home-view-main">
+        <div className="section-home-image">
+          <img src="./images/logonaves.svg" alt="home-social-network-image" id="banner-home-main"/>
+        </div>
+        <div className="section-home-container">
+          <div className="text-home-container">
+            <h1>Access control</h1>
+          </div>
+          <div className="button-home-container">
+            <CInputs type="button" value="Sing Up" onClick={btnRegister} className='register-button'/>
+            <CInputs type="button" value="Login" onClick={btnLogin} className='login-button'/>
+          </div>
+        </div>
       </div>
-      <div>
-      <CInputs type='button' name='Login' value='Login' onClick={btnLogin} />
-      </div>
 
-    </div>
+    </>
   )
 }
