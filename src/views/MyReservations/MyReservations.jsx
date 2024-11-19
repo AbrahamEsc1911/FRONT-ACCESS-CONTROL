@@ -44,11 +44,10 @@ export const MyReservations = () => {
 
   }, [])
 
-
   return (
     <>
       <div className='body-myReservation'>
-        
+
         <CSection75 content={
           <div>
             <div className='all-reservations'>
