@@ -56,7 +56,7 @@ export const MyReservations = () => {
             <CBlockMain content={
               <div className='stats-panel'>
                 <CTitleForStats title1='PLACE' title2='STATE' title3='ENTRY' title4='EXIT' title5='E. HOUR' />
-                {futureReservations.length > 0 && futureReservations.map((element) => {
+                {futureReservations && futureReservations.map((element) => {
                   const entryDate = new Date(element.entry_date);
                   const exitDate = new Date(element.exit_date);
                   return <div key={element.id}>
